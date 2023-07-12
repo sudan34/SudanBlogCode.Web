@@ -121,12 +121,12 @@ namespace SudanBlogCode.Web.Areas.Identity.Pages.Account
                     var user = await _userManager.FindByEmailAsync(Input.Email);
                     var roles = await _userManager.GetRolesAsync(user);
                     if (roles.IndexOf("Admin") != -1)
-                        returnUrl = "/Admin/AdminDashborad";
+                        returnUrl = "/Admin/AdminDashboard";
                     else if (roles.IndexOf("Author") != -1)
-                        returnUrl = "/Author/AuthorDashborad";
+                        returnUrl = "/Author/AuthorDashboard";
 
                     else if (roles.IndexOf("Subscriber") != -1)
-                        returnUrl = "/Subscriber/SubscriberDashborad";
+                        returnUrl = "/Subscriber/SubscriberDashboard";
 
                     return LocalRedirect(returnUrl);
                 }

@@ -24,17 +24,4 @@
     <ProjectReference Include="..\SudanBolgCode.Utlity\SudanBlogCode.Utility.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Areas\Admin\Data\" />
-    <Folder Include="Areas\Admin\Models\" />
-    <Folder Include="Areas\Author\Controllers\" />
-    <Folder Include="Areas\Author\Data\" />
-    <Folder Include="Areas\Author\Models\" />
-    <Folder Include="Areas\Author\Views\" />
-    <Folder Include="Areas\Subscriber\Controllers\" />
-    <Folder Include="Areas\Subscriber\Data\" />
-    <Folder Include="Areas\Subscriber\Models\" />
-    <Folder Include="Areas\Subscriber\Views\" />
-  </ItemGroup>
-
 </Project>
