@@ -4,6 +4,8 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using SudanBolgCode.Utility;
+using SudanBlogCode.DataAccess.Repository.IRepositiry;
+using SudanBlogCode.DataAccess.Repository;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -17,6 +19,8 @@ builder.Services.AddIdentity<IdentityUser, IdentityRole>().AddDefaultTokenProvid
     .AddEntityFrameworkStores<ApplicationDbContext>();
 
 builder.Services.AddSingleton<IEmailSender, EmailSender>();
+builder.Services.AddSingleton<ICategoryRepository, CategoryRepository>();
+
 builder.Services.AddRazorPages();
 var app = builder.Build();
 
