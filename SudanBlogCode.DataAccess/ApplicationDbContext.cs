@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using SudanBlogCode.Models;
 using SudanBlogCode.Web.Models;
 
 namespace SudanBlogCode.Web.DataAccess
@@ -10,7 +11,7 @@ namespace SudanBlogCode.Web.DataAccess
         {
         }
 
-        public DbSet<Temp> temp { get; set; }
+        public DbSet<ApplicationUser> ApplicationUser { get; set; }
     }
 
 }
