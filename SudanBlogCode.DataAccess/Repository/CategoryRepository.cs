@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using SudanBlogCode.DataAccess.Repository.IRepositiry;
+using SudanBlogCode.DataAccess.Repository.IRepository;
 using SudanBlogCode.Models;
 using SudanBlogCode.Web.DataAccess;
 using System;

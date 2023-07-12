@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SudanBlogCode.DataAccess.Repository.IRepositiry
+namespace SudanBlogCode.DataAccess.Repository.IRepository
 {
     public interface ICategoryRepository
     {

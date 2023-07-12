@@ -1,21 +1,21 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using SudanBlogCode.DataAccess.Repository.IRepositiry;
+using SudanBlogCode.DataAccess.Repository.IRepository;
 
 namespace SudanBlogCode.Web.Areas.Admin.Controllers
 {
     [Area("Admin")]
     public class CategoryController : Controller
     {
-        private ICategoryRepository _CategoryRepository;
+        private readonly IUnitOfWork _unitOfWork;
 
-        public CategoryController(ICategoryRepository iCategoryRepository)
+        public CategoryController(IUnitOfWork unitOfWork)
         {
-            _CategoryRepository = iCategoryRepository;
+            _unitOfWork = unitOfWork;
         }
 
         public IActionResult Index()
         {
-            var getAll = _CategoryRepository.GetAllCategories();
+            var getAll = _unitOfWork.Category.GetAllCategories();
             return View();
         }
     }
