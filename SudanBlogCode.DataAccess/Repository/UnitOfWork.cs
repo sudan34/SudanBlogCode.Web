@@ -14,7 +14,7 @@ namespace SudanBlogCode.DataAccess.Repository
         private readonly ApplicationDbContext _db;
         public ICategoryRepository Category {  get; private set; }
 
-        ICategoryRepository IUnitOfWork.Category => throw new NotImplementedException();
+       // ICategoryRepository IUnitOfWork.Category => throw new NotImplementedException();
 
         public UnitOfWork(ApplicationDbContext db)
         {
