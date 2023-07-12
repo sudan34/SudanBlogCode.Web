@@ -21,11 +21,13 @@ namespace SudanBlogCode.Web.Areas.Identity.Pages.Account
     {
         private readonly SignInManager<IdentityUser> _signInManager;
         private readonly ILogger<LoginModel> _logger;
+        private readonly UserManager<IdentityUser> _userManager;
 
-        public LoginModel(SignInManager<IdentityUser> signInManager, ILogger<LoginModel> logger)
+        public LoginModel(SignInManager<IdentityUser> signInManager, ILogger<LoginModel> logger, UserManager<IdentityUser> userManager)
         {
             _signInManager = signInManager;
             _logger = logger;
+            _userManager = userManager;
         }
 
         /// <summary>
@@ -115,6 +117,17 @@ namespace SudanBlogCode.Web.Areas.Identity.Pages.Account
                 if (result.Succeeded)
                 {
                     _logger.LogInformation("User logged in.");
+
+                    var user = await _userManager.FindByEmailAsync(Input.Email);
+                    var roles = await _userManager.GetRolesAsync(user);
+                    if (roles.IndexOf("Admin") != -1)
+                        returnUrl = "/Admin/AdminDashborad";
+                    else if (roles.IndexOf("Author") != -1)
+                        returnUrl = "/Author/AuthorDashborad";
+
+                    else if (roles.IndexOf("Subscriber") != -1)
+                        returnUrl = "/Subscriber/SubscriberDashborad";
+
                     return LocalRedirect(returnUrl);
                 }
                 if (result.RequiresTwoFactor)
