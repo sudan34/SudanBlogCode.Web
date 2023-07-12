@@ -13,6 +13,7 @@ namespace SudanBlogCode.DataAccess.Repository.IRepository
         // void Update(T entity);
 
         T GetFirstOrDefault(Expression<Func<T, bool>> expression);
+        IEnumerable<T> GetAll();
         IEnumerable<T> GetAll(Expression<Func<T, bool>> expression);
         void Add(T entity);
         void AddRange(IEnumerable<T> entity);
