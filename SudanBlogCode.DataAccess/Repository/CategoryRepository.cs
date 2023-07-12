@@ -10,45 +10,18 @@ using System.Threading.Tasks;
 
 namespace SudanBlogCode.DataAccess.Repository
 {
-    public class CategoryRepository : ICategoryRepository
+    public class CategoryRepository : Repository<Category>, ICategoryRepository
     {
-        private ApplicationDbContext _db;
-        internal DbSet<Category> _categoryEntity;
+        private readonly ApplicationDbContext _context;
 
-        public CategoryRepository(ApplicationDbContext db)
+        public CategoryRepository(ApplicationDbContext context) : base(context) 
         {
-            _db = db;
-            this._categoryEntity = _db.Set<Category>();
-        }
-        public void AddCategory(Category category)
-        {
-            _db.Category.Add(category);
-            _db.SaveChanges();
+            _context = context;
         }
 
-        public void DeleteCategory(int id)
+        public void Update(Category obj)
         {
-            Category category = GetCategory(id);
-            _db.Category.Remove(category);
-            _db.SaveChanges();
-        }
-
-        public IEnumerable<Category> GetAllCategories()
-        {
-            return _db.Category.AsEnumerable();
-        }
-
-        public Category GetCategory(int id)
-        {
-            return _db.Category.SingleOrDefault(u => u.Id == id);
-
-        }
-
-        public void UpdateCategory(Category category)
-        {
-            if (category != null)
-                _db.Category.Update(category);
-            _db.SaveChanges();
+            throw new NotImplementedException();
         }
     }
 }

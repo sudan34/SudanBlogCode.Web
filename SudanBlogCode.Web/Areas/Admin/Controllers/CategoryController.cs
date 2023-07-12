@@ -15,7 +15,7 @@ namespace SudanBlogCode.Web.Areas.Admin.Controllers
 
         public IActionResult Index()
         {
-            var getAll = _unitOfWork.Category.GetAllCategories();
+            var getAll = _unitOfWork.Category.GetAll();
             return View();
         }
     }

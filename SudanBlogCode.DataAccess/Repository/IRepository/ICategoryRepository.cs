@@ -7,13 +7,8 @@ using System.Threading.Tasks;
 
 namespace SudanBlogCode.DataAccess.Repository.IRepository
 {
-    public interface ICategoryRepository
+    public interface ICategoryRepository : IRepository<Category>
     {
-        void AddCategory(Category category);
-        IEnumerable<Category> GetAllCategories();
-        Category GetCategory(int id);
-        void UpdateCategory(Category category);
-        void DeleteCategory(int id);
-
+       void Update(Category obj);
     }
 }
