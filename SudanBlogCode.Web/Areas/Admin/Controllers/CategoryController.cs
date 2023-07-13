@@ -73,5 +73,89 @@ namespace SudanBlogCode.Web.Areas.Admin.Controllers
                 return RedirectToAction("Index");
             }
         }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Edit(Category obj, IFormFile? file)
+        {
+            if (ModelState.IsValid)
+            {
+                string wwwRootPath = _webHostEnvironment.WebRootPath;
+                if (file != null)
+                {
+                    string fileName = Guid.NewGuid().ToString();
+                    var uploads = Path.Combine(wwwRootPath, @"images\category");
+                    var extension = Path.GetExtension(file.FileName);
+                    if (obj.DefautlImageUrl != null)
+                    {
+                        var oldImagePath = Path.Combine(wwwRootPath, obj.DefautlImageUrl.TrimStart('\\'));
+                        if (System.IO.File.Exists(oldImagePath))
+                        {
+                            System.IO.File.Delete(oldImagePath);
+                        }
+                    }
+                    using (var fileStreams = new FileStream(Path.Combine(uploads, fileName + extension), FileMode.Create))
+                    {
+                        file.CopyTo(fileStreams);
+                    }
+                    obj.DefautlImageUrl = @"\images\category\" + fileName + extension;
+                }
+
+                obj.CreatedBy = _applicationUser.GetUserId(HttpContext.User);
+                _unitOfWork.Category.Update(obj);
+                _unitOfWork.Save();
+                TempData["success"] = "Category updted successfully";
+                return RedirectToAction("Index");
+            }
+            return View(obj);
+
+        }
+        public IActionResult Delete(int? id)
+        {
+            if (id == null || id == 0)
+            {
+                return NotFound();
+            }
+            var obj = _unitOfWork.Category.GetFirstOrDefault(u=>u.Id == id);
+            if (obj == null)
+            {
+                return NotFound();
+            }
+            return View(obj);
+        }
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public IActionResult DeletePost(int? id)
+        {
+            var obj = _unitOfWork.Category.GetFirstOrDefault(u => u.Id == id);
+            if (obj == null)
+            {
+                return NotFound();
+            }
+            _unitOfWork.Category.Remove(obj);
+            _unitOfWork.Save();
+            TempData["success"] = "Category deleted successfully";
+            return RedirectToAction("Index");
+        }
+        /*//POST
+        [HttpDelete]
+        public IActionResult Delete(int? id)
+        {
+
+            var obj = _unitOfWork.Category.GetFirstOrDefault(u => u.Id == id);
+            if (obj == null)
+            {
+                return Json(new { success = false, message = "Error while deleting" });
+            }
+
+            var oldImagePath = Path.Combine(_webHostEnvironment.WebRootPath, obj.DefautlImageUrl.TrimStart('\\'));
+            if (System.IO.File.Exists(oldImagePath))
+            {
+                System.IO.File.Delete(oldImagePath);
+            }
+            _unitOfWork.Category.Remove(obj);
+            _unitOfWork.Save();
+            return Json(new { success = true, message = "Deleted Successfully!" });
+
+        }*/
     }
 }

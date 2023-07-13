@@ -18,8 +18,10 @@
         <thead>
             <tr>
                 <th>Id</th>
-                <th>Name</th>
+                <th>Sub Category</th>
+                <th>Category</th>
                 <th>Created Date</th>
+                <th>Status</th>
                 <th>Action</th>
             </tr>
         </thead>
@@ -29,6 +31,7 @@
                 <tr>
                     <td style="width:5%"> @item.Id</td>
                     <td style="width:70%"> @item.SubCategoryName</td>
+                    <td style="width:70%"> @item.CategoryId</td>
                     <td style="width:15%"> @item.CreatedDate.ToLongDateString()</td>
                     <td style="width:10%">
                         @if (item.IsActive)
@@ -44,7 +47,7 @@
                             <a asp-area="Admin" asp-controller="SubCategory" asp-action="Edit" asp-route-id="@item.Id" class="d-none d-sm-inline btn btn-sm btn-primary shadow-sm">
                                 <i class="bi bi-pencil-square" data-bs-toggle="tooltip" title="Edit" style="font-size:15px"></i> Edit
                             </a>
-                            <a asp-area="Admin" asp-controller="SubCategory" asp-action="Delete" class="d-none d-sm-inline btn btn-sm btn-danger shadow-sm">
+                            <a asp-area="Admin" asp-controller="SubCategory" asp-action="Delete" asp-route-id="@item.Id" class="d-none d-sm-inline btn btn-sm btn-danger shadow-sm">
                                 <i class="bi bi-x-square" data-bs-toggle="tooltip" title="Remove" style="font-size:15px"></i> Delete
                             </a>
                         </div>

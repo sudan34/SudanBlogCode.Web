@@ -1,0 +1,53 @@
+﻿@model SubCategoryVM
+<div class="page-wrapper">
+    <div class="row">
+        <div class="col-sm-6 py-1">
+            <h5> Edit SubCategory</h5>
+        </div>
+    </div>
+    <div class="page-body">
+        <form method="post" enctype="multipart/form-data" class="row g-3 p-3">
+            <div class="border p-2 mt-2 row">
+                <input type="hidden" asp-for="SubCategory.Id" />
+                <input type="hidden" asp-for="SubCategory.CreatedBy" />
+                <div class="col-md-6">
+                    <label class="form-label" asp-for="SubCategory.CategoryId"></label>
+                    <select asp-for="SubCategory.CategoryId" asp-items="@Model.CategoryList" class="form-control">
+                        <option disabled selected>--Select Category--</option>
+                    </select>
+                    <span asp-validation-for="SubCategory" class="text-danger"></span>
+
+                    <label class="form-label" asp-for="SubCategory.SubCategoryName"></label>
+                    <input type="text" asp-for="SubCategory.SubCategoryName" class="form-control" />
+                    <span asp-validation-for="SubCategory.SubCategoryName" class="text-danger"></span>
+                </div>
+
+                <div class="col-md-6">
+
+                    <label class="form-label" asp-for="SubCategory.Slug"></label>
+                    <input type="text" asp-for="SubCategory.Slug" class="form-control" />
+                    <span asp-validation-for="SubCategory.Slug" class="text-danger"></span>
+                    <br />
+                    <label class="form-label" asp-for="SubCategory.IsActive"></label>
+                    <input type="checkbox" asp-for="SubCategory.IsActive" class="form-check-input" />
+                    <span asp-validation-for="SubCategory.IsActive" class="text-danger"></span>
+                </div>
+
+                <div class="col-md-12 pt-2">
+                    <button type="submit" class="btn btn-success">
+                        Update
+                    </button>
+                    <a asp-action="Index" asp-area="Admin" aasp-controller="SubCategory" class="btn btn-warning">
+                        Back to List
+                    </a>
+                </div>
+            </div>
+        </form>
+
+    </div>
+</div>
+
+@section Scripts{
+
+    <partial name="_ValidationScriptsPartial" />
+}
