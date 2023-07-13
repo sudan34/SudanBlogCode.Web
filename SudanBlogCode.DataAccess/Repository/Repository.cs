@@ -31,22 +31,45 @@ namespace SudanBlogCode.DataAccess.Repository
             dbSet.AddRange(entity);
         }
 
-        public IEnumerable<T> GetAll(Expression<Func<T, bool>> expression)
+        public IEnumerable<T> GetAll(Expression<Func<T, bool>> expression, string? includeProperties = null)
         {
             IQueryable<T> query = dbSet;
             query = query.Where(expression);
-            return query;
+            if (includeProperties != null)
+            {
+                foreach (var item in includeProperties.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries))
+                {
+                    query = query.Include(item);
+                }
+            }
+
+            return query.ToList();
         }
 
-        public IEnumerable<T> GetAll()
+        public IEnumerable<T> GetAll(string? includeProperties = null)
         {
-            return dbSet.ToList();
+            IQueryable<T> query = dbSet;
+            if (includeProperties != null)
+            {
+                foreach (var item in includeProperties.Split(new char[] {','},StringSplitOptions.RemoveEmptyEntries))
+                {
+                    query = query.Include(item);
+                }
+            }
+            return query.ToList();
         }
 
-        public T GetFirstOrDefault(Expression<Func<T, bool>> expression)
+        public T GetFirstOrDefault(Expression<Func<T, bool>> expression, string? includeProperties = null)
         {
             IQueryable<T> query = dbSet;
             query = query.Where(expression);
+            if (includeProperties != null)
+            {
+                foreach (var item in includeProperties.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries))
+                {
+                    query = query.Include(item);
+                }
+            }
             return query.FirstOrDefault();
         }
 

@@ -23,7 +23,7 @@ namespace SudanBlogCode.Web.Areas.Admin.Controllers
 
         public IActionResult Index()
         {
-            IEnumerable<SubCategory> objList = _unitOfWork.SubCategory.GetAll();
+            IEnumerable<SubCategory> objList = _unitOfWork.SubCategory.GetAll(includeProperties:"Category");
             return View(objList);
         }
         public IActionResult Create()

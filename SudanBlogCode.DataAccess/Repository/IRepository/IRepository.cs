@@ -12,9 +12,9 @@ namespace SudanBlogCode.DataAccess.Repository.IRepository
         //T GetById(int id);
         // void Update(T entity);
 
-        T GetFirstOrDefault(Expression<Func<T, bool>> expression);
-        IEnumerable<T> GetAll();
-        IEnumerable<T> GetAll(Expression<Func<T, bool>> expression);
+        T GetFirstOrDefault(Expression<Func<T, bool>> expression, string? includeProperties = null);
+        IEnumerable<T> GetAll(string? includeProperties = null);
+        IEnumerable<T> GetAll(Expression<Func<T, bool>> expression, string? includeProperties = null);
         void Add(T entity);
         void AddRange(IEnumerable<T> entity);
         void Remove(T entity);
