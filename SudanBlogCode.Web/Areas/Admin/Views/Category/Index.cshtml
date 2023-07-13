@@ -8,7 +8,7 @@
             </div>
             <div class="col-sm-6 d-flex flex-row align-items-center justify-content-end">
                 <a asp-area="Admin" asp-controller="Category" asp-action="Create" class="d-none d-sm-inline btn btn-sm btn-success shadow-sm">
-                    Add New Category
+                    <i class="bi bi-plus-square" data-bs-toggle="tooltip" title="Edit" style="font-size:15px"></i> Add New Category
                 </a>
             </div>
         </div>
@@ -34,10 +34,10 @@
                         <div class="w-75 btn-group" role="group">
 
                             <a asp-area="Admin" asp-controller="Category" asp-action="Edit" class="d-none d-sm-inline btn btn-sm btn-primary shadow-sm">
-                                Edit
+                               <i class="bi bi-pencil-square" data-bs-toggle="tooltip" title="Edit" style="font-size:15px"></i> Edit
                             </a>
                             <a asp-area="Admin" asp-controller="Category" asp-action="Delete" class="d-none d-sm-inline btn btn-sm btn-danger shadow-sm">
-                                Delete
+                                <i class="bi bi-x-square" data-bs-toggle="tooltip" title="Remove" style="font-size:15px"></i> Delete
                             </a>
                         </div>
 

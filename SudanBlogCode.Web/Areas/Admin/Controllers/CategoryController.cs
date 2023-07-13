@@ -37,6 +37,8 @@ namespace SudanBlogCode.Web.Areas.Admin.Controllers
                 obj.CreatedBy = _applicationUser.GetUserId(HttpContext.User);
                 _unitOfWork.Category.Add(obj);
                 _unitOfWork.Save();
+                TempData["success"] = "Category saved successfully";
+                return RedirectToAction("Index");
             }
             return View(obj);
         }
