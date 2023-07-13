@@ -1,0 +1,62 @@
+﻿@model BlogImagesVM
+
+<div class="page-wrapper">
+    <div class="row">
+        <div class="col-sm-6 py-1">
+            <h5>Blog Images</h5>
+        </div>
+    </div>
+    <div class="page-body">
+        <form method="post" enctype="multipart/form-data" class="row g-3 p-3">
+            <div class="border p-2 mt-2 row">
+                <div class="col-md-6">
+                    <label class="form-label" asp-for="BlogImages.SubCategoryId"></label>
+                    <Select asp-for="BlogImages.SubCategoryId" asp-items="@Model.SubCategoryList" class="form-control">
+                        <option disabled selected>--Select Category--</option>
+                    </Select>
+                    <span asp-validation-for="BlogImages.SubCategoryId" class="text-danger"></span>
+                </div>
+
+
+                <div class="col-md-6">
+                    <label class="form-label" asp-for="BlogImages.BlogTitle"></label>
+                    <input asp-for="BlogImages.BlogTitle" class="form-control" />
+                    <span asp-validation-for="BlogImages.BlogTitle" class="text-danger"></span>
+                </div>
+                <div class="col-md-12">
+                    <label class="form-label" asp-for="BlogImages.ImageUrl"></label>
+                    <input type="file" name="files" id="uploadBox" multiple class="form-control" />
+                </div>
+
+                <div class="col-md-12 pt-2">
+                    <button type="submit" class="btn btn-success" onclick="return ValidateInput()">
+                        Create
+                    </button>
+                    <a asp-action="Index" asp-area="Admin" asp-controller="BlogImages" class="btn btn-warning">
+                        Back to List
+                    </a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts{
+
+    @{
+        <partial name="_ValidationScriptsPartial" />
+    }
+    <script type="text/javascript">
+        function ValidateInput() {
+            if (document.getElementById("uploadBox").value == "") {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Please upload an Image!',
+                });
+                return false;
+            }
+            return true;
+        }
+    </script>
+}

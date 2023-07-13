@@ -11,6 +11,7 @@ namespace SudanBlogCode.DataAccess.Repository.IRepository
     {
         ICategoryRepository Category {  get; }
         ISubCategoryRepository SubCategory {  get; }
+        IBlogImagesRepository BlogImages {  get; }
         void Save();
     }
 }
