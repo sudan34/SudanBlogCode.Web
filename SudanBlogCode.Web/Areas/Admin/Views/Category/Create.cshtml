@@ -2,39 +2,45 @@
 <div class="page-wrapper">
     <div class="row">
         <div class="col-sm-6 py-1">
-            <h6>Category</h6>
+            <h5>Category</h5>
         </div>
     </div>
     <div class="page-body">
         <form method="post" enctype="multipart/form-data" class="row g-3 p-3">
-            <div class="col-md-12">
-                <label class="form-label" asp-for="CategoryName"></label>
-                <input type="text" asp-for="CategoryName" class="form-control" />
-                <span asp-validation-for="CategoryName" class="text-danger"></span>
-            </div>
-            <div class="col-md-12">
-                <label class="form-label" asp-for="CategorySlug"></label>
-                <input type="text" asp-for="CategorySlug" class="form-control" />
-                <span asp-validation-for="CategorySlug" class="text-danger"></span>
-            </div>
-            <div class="col-md-12">
-                <label class="form-label" asp-for="DefautlImageUrl"></label>
-                <input type="file" name="file" id="uploadBox" asp-for="DefautlImageUrl" class="form-control" />
-                <span asp-validation-for="DefautlImageUrl" class="text-danger"></span>
-            </div>
-            <div class="col-md-12">
-                <label class="form-label" asp-for="Description"></label>
-                <textarea rows="5" asp-for="Description" class="form-control"></textarea>
-                <span asp-validation-for="Description" class="text-danger"></span>
-            </div>
-            <div class="col-md-12">
-                <label class="form-label" asp-for="IsActive"></label>
-                <input type="checkbox" asp-for="IsActive" class="form-check-input" />
-                <span asp-validation-for="IsActive" class="text-danger"></span>
-            </div>
-            <div class="col-md-12">
-                <button type="submit" class="btn btn-success">Create</button>
-                <a asp-action="Index" asp-area="Admin" aasp-controller="Category" class="btn btn-warning">Back to List</a>
+            <div class="border p-2 mt-2 row">
+                <div class="col-md-6">
+                    <label class="form-label" asp-for="CategoryName"></label>
+                    <input type="text" asp-for="CategoryName" class="form-control" />
+                    <span asp-validation-for="CategoryName" class="text-danger"></span>
+
+                    <label class="form-label" asp-for="CategorySlug"></label>
+                    <input type="text" asp-for="CategorySlug" class="form-control" />
+                    <span asp-validation-for="CategorySlug" class="text-danger"></span>
+
+                    <label class="form-label" asp-for="DefautlImageUrl"></label>
+                    <input type="file" name="file" id="uploadBox" asp-for="DefautlImageUrl" class="form-control" />
+                    <span asp-validation-for="DefautlImageUrl" class="text-danger"></span>
+                </div>
+
+
+                <div class="col-md-6">
+                    <label class="form-label" asp-for="Description"></label>
+                    <textarea rows="7" asp-for="Description" class="form-control"></textarea>
+                    <span asp-validation-for="Description" class="text-danger"></span>
+                    <br />
+                    <label class="form-label" asp-for="IsActive"></label>
+                    <input type="checkbox" asp-for="IsActive" class="form-check-input" />
+                    <span asp-validation-for="IsActive" class="text-danger"></span>
+                </div>
+
+                <div class="col-md-12">
+                    <button type="submit" class="btn btn-success">
+                        Create
+                    </button>
+                    <a asp-action="Index" asp-area="Admin" aasp-controller="Category" class="btn btn-warning">
+                        Back to List
+                    </a>
+                </div>
             </div>
         </form>
     </div>
@@ -45,7 +51,7 @@
     @{
         <partial name="_ValidationScriptsPartial" />
     }
-    <script>
+    <script type="text/javascript">
         function ValidateInput() {
             if (document.getElementById("uploadBox").value == "") {
                 Swal.fire({
