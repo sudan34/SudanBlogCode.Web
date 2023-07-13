@@ -29,11 +29,11 @@
                 <tr>
                     <td style="width:5%"> @item.Id</td>
                     <td style="width:70%"> @item.CategoryName</td>
-                    <td style="width:15%"> @item.CreatedDate.ToLongDateString()</td>
+                    <td style="width:15%"> @item.CreatedDate.ToLongDateString() @item.DefautlImageUrl</td>
                     <td>
                         <div class="w-75 btn-group" role="group">
 
-                            <a asp-area="Admin" asp-controller="Category" asp-action="Edit" class="d-none d-sm-inline btn btn-sm btn-primary shadow-sm">
+                            <a asp-area="Admin" asp-controller="Category" asp-action="Edit" asp-route-id="@item.Id" class="d-none d-sm-inline btn btn-sm btn-primary shadow-sm">
                                <i class="bi bi-pencil-square" data-bs-toggle="tooltip" title="Edit" style="font-size:15px"></i> Edit
                             </a>
                             <a asp-area="Admin" asp-controller="Category" asp-action="Delete" class="d-none d-sm-inline btn btn-sm btn-danger shadow-sm">
