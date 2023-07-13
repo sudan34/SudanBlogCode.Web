@@ -1,14 +1,14 @@
-﻿@model IEnumerable<Category>
+﻿@model IEnumerable<SubCategory>
 
 <div class="table-wrapper">
     <div class="table-title">
         <div class="row">
             <div class="col-sm-6 py-1">
-                <h6>Category List</h6>
+                <h6>SubCategory List</h6>
             </div>
             <div class="col-sm-6 d-flex flex-row align-items-center justify-content-end">
-                <a asp-area="Admin" asp-controller="Category" asp-action="Create" class="d-none d-sm-inline btn btn-sm btn-success shadow-sm">
-                    <i class="bi bi-plus-square" data-bs-toggle="tooltip" title="Edit" style="font-size:15px"></i> Add New Category
+                <a asp-area="Admin" asp-controller="SubCategory" asp-action="Create" class="d-none d-sm-inline btn btn-sm btn-success shadow-sm">
+                    <i class="bi bi-plus-square" data-bs-toggle="tooltip" title="Edit" style="font-size:15px"></i> Add New SubCategory
                 </a>
             </div>
         </div>
@@ -28,7 +28,7 @@
             {
                 <tr>
                     <td style="width:5%"> @item.Id</td>
-                    <td style="width:70%"> @item.CategoryName</td>
+                    <td style="width:70%"> @item.SubCategoryName</td>
                     <td style="width:15%"> @item.CreatedDate.ToLongDateString()</td>
                     <td style="width:10%">
                         @if (item.IsActive)
@@ -41,10 +41,10 @@
                         }
                     <td>
                         <div class="w-75 btn-group" role="group">
-                            <a asp-area="Admin" asp-controller="Category" asp-action="Edit" asp-route-id="@item.Id" class="d-none d-sm-inline btn btn-sm btn-primary shadow-sm">
+                            <a asp-area="Admin" asp-controller="SubCategory" asp-action="Edit" asp-route-id="@item.Id" class="d-none d-sm-inline btn btn-sm btn-primary shadow-sm">
                                 <i class="bi bi-pencil-square" data-bs-toggle="tooltip" title="Edit" style="font-size:15px"></i> Edit
                             </a>
-                            <a asp-area="Admin" asp-controller="Category" asp-action="Delete" class="d-none d-sm-inline btn btn-sm btn-danger shadow-sm">
+                            <a asp-area="Admin" asp-controller="SubCategory" asp-action="Delete" class="d-none d-sm-inline btn btn-sm btn-danger shadow-sm">
                                 <i class="bi bi-x-square" data-bs-toggle="tooltip" title="Remove" style="font-size:15px"></i> Delete
                             </a>
                         </div>

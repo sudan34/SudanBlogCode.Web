@@ -10,19 +10,18 @@ using System.Threading.Tasks;
 
 namespace SudanBlogCode.DataAccess.Repository
 {
-    public class CategoryRepository : Repository<Category>, ICategoryRepository
+    public class SubCategoryRepository : Repository<SubCategory>, ISubCategoryRepository
     {
         private readonly ApplicationDbContext _context;
 
-        public CategoryRepository(ApplicationDbContext context) : base(context) 
+        public SubCategoryRepository(ApplicationDbContext context) : base(context) 
         {
             _context = context;
         }
 
-        public void Update(Category obj)
+        public void Update(SubCategory obj)
         {
             _context.Update(obj);
-
         }
     }
 }
